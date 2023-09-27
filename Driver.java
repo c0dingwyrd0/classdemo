@@ -47,15 +47,15 @@ public class Driver {
         }
         
         System.out.print("Enter the percentage of discount for book 1 in each invoice: ");
-		int percentDiscount = scnr.nextInt();
-		double discount1 = percentDiscount; // convert discount before passing to method
+		int percentDiscount1 = scnr.nextInt();
+		double discount1 = percentDiscount1 / 100; // convert discount before passing to method
 		
 		invoice1.applyDiscount(1, discount1); //Apply 10% discount to book #1 on both invoices.
 		invoice2.applyDiscount(1, discount1); //Apply 10% discount to book #1 on both invoices.
 		
 		System.out.print("Enter the percentage of discount for book 2 in each invoice: ");
-		percentDiscount = scnr.nextInt();
-		double discount2 = (percentDiscount/100); // convert discount before passing to method
+		int percentDiscount2 = scnr.nextInt();
+		double discount2 = percentDiscount2/ 100; // convert discount before passing to method
 		
 		
 		invoice1.applyDiscount(2, discount2); //Apply 20% discount to book #2 on both invoices.
@@ -66,8 +66,8 @@ public class Driver {
 		double priceAdjustment = amountDiscounted;
 		invoice1.adjustPrice(3, priceAdjustment); //Adjust the price of book #3 in the second invoice by adding $2.
 			
-		System.out.println(invoice1); //prints both invoices in a nicely formatted output (use tax rate of 4.5%).
-		System.out.println(invoice2);
+		System.out.println(invoice1.toString()); //prints both invoices in a nicely formatted output (use tax rate of 4.5%).
+		System.out.println(invoice2.toString());
 		
 		scnr.close();
         
