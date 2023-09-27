@@ -5,10 +5,10 @@ public class Book {
 	private double bookPrice;
 	private double bookDiscount;
 	
-	public Book(String bookTitle, double bookWeight, double bookPrice) { //constructor to initialize all instance variables except discount- set to zero.
+	public Book(String bookTitle, double bookPrice, double bookWeight) { //constructor to initialize all instance variables except discount- set to zero.
 		this.bookTitle = bookTitle; 
-		this.bookWeight = bookWeight;
 		this.bookPrice = bookPrice;
+		this.bookWeight = bookWeight;
 		this.bookDiscount = 0.0;
 		
 	}
@@ -17,12 +17,12 @@ public class Book {
 		return bookTitle;
 	}
 	
-	public double getBookWeight() { // Getter for bookWeight variable
-		return bookWeight;
-	}
-	
 	public double getBookPrice() { // Getter for bookPrice
 		return bookPrice;
+	}
+	
+	public double getBookWeight() { // Getter for bookWeight variable
+		return bookWeight;
 	}
 	
 	public double getBookDiscount() {
@@ -31,7 +31,7 @@ public class Book {
 	
 	
 	public void setBookDiscount(double percentDiscount) { //setter method for discount discount entered as a percentage
-		this.bookDiscount = this.bookPrice * (percentDiscount / 100.0); 
+		this.bookDiscount = this.bookDiscount + (percentDiscount / 100.0); 
 	}
 	
 	public void adjustPrice(double amountDiscounted) { //method than takes an bookPrice type double and adds that amount of money to the book’s price- the amount can be positive or negative as a book’s price may be increased or decreased.
@@ -39,7 +39,7 @@ public class Book {
 	}
 	
 	public double priceAfterDiscount(double discount, double bookPrice) { //method that calc and returns the discounted book’s price after applying the discount
-		return this.bookPrice * (1- this.bookDiscount);
+		return bookPrice - discount;
 	}
 	
 	public boolean equals(Object bookObject) { //method to test the equality of two books
