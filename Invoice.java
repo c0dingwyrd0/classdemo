@@ -1,4 +1,4 @@
-
+import java.text.DecimalFormat;
 public class Invoice {
 	private String customerName;
 	private Book[] customerBooks;
@@ -68,26 +68,29 @@ public class Invoice {
 		return (cost * taxRate) / 100; //calculates and returns the amount of tax to be paid
 	}
 	
-	
-	public String toString() { //method that returns a string representation of the invoice including the following:
-		StringBuilder invoiceLayout = new StringBuilder("Customer Name:" + customerName + "\n"); //customer's name
-		for (Book book : customerBooks) {
-			if (book != null) {
-				invoiceLayout.append("Book Title: ").append(book.getBookTitle()).append("\n");
-				invoiceLayout.append(book.toString()).append("\n");   //details of the non-null invoice's books
-			}
-		}
-		invoiceLayout.append("Total Book Weight: ").append(getTotalWeight()).append("lbs \n"); //total weight of all books in the invoice
-		invoiceLayout.append("Total: $").append(getTotal()).append("\n");  //total before discount
-		invoiceLayout.append("Total with discount: $").append(getDiscountedTotal()).append("\n"); //total after discount
-			
-		double tax = calculateTax(getDiscountedTotal(), 4.5); //amount of tax to be paid where the tax is calculated based on the discounted invoice's total
-			
-		invoiceLayout.append("Taxes at 4.5%: $").append(tax).append("\n");
-		invoiceLayout.append("Overall Cost: $").append(getDiscountedTotal() + tax).append("\n"); //the overall cost which is equal to discounted total + tax 
-			
-		return invoiceLayout.toString();
-		
+	public String toString() {
+	    DecimalFormat currencyFormat = new DecimalFormat("#0.00"); // Format for currency
+
+	    StringBuilder invoiceLayout = new StringBuilder("Customer Name: " + customerName + "\n");
+
+	    for (Book book : customerBooks) {
+	        if (book != null) {
+	            invoiceLayout.append("Book Title: ").append(book.getBookTitle()).append("\n");
+	            invoiceLayout.append("Book Price: $").append(currencyFormat.format(book.getBookPrice())).append("\n");
+	            invoiceLayout.append("Book Weight: ").append(currencyFormat.format(book.getBookWeight())).append("lbs\n");
+	            invoiceLayout.append("Book Discount: ").append(currencyFormat.format(book.getBookDiscount() * 100)).append("%\n");
+	        }
+	    }
+
+	    invoiceLayout.append("Total Book Weight: ").append(currencyFormat.format(getTotalWeight())).append("lbs\n");
+	    invoiceLayout.append("Total: $").append(currencyFormat.format(getTotal())).append("\n");
+	    invoiceLayout.append("Total with discount: $").append(currencyFormat.format(getDiscountedTotal())).append("\n");
+
+	    double tax = calculateTax(getDiscountedTotal(), 4.5);
+	    invoiceLayout.append("Taxes at 4.5%: $").append(currencyFormat.format(tax)).append("\n");
+	    invoiceLayout.append("Overall Cost: $").append(currencyFormat.format(getDiscountedTotal() + tax)).append("\n");
+
+	    return invoiceLayout.toString();
 	}
 
 }
