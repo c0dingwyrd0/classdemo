@@ -61,7 +61,10 @@ public class Invoice {
 			throw new RuntimeException("Invalid book number.");    //throw exception if book is bookNum is invalid
 		}
 		
-		customerBooks[bookNum - 1].setBookDiscount(bookDiscount);  //sets discount of one of the invoice's books
+		
+		double currentPrice = customerBooks[bookNum - 1].getBookPrice();
+		double discountedPrice = customerBooks[bookNum -1].priceAfterDiscount(bookDiscount, currentPrice);
+		customerBooks[bookNum - 1].adjustPrice(currentPrice - discountedPrice);
 	}
 	
 	public static double calculateTax(double cost, double taxRate) { //static method used to calculate the amount of sales tax to be paid, two input parameters both of type double. The first called cost, the second called taxRate.
