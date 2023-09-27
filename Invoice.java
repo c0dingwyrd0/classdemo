@@ -56,7 +56,7 @@ public class Invoice {
 		customerBooks[bookNum - 1].adjustPrice(priceAdjustment);
 	}
 	
-	public void applyDiscount(int bookNum, double bookDiscount) {   //method sets discount of one of the invoice's books. The method takes two inputs, namely bookNum and discount, where bookNum is either 1, 2 or 3. The method then sets the specified book’s discount to the input discount value
+	public void applyDiscount(int bookNum, double bookDiscount) {   //method sets discount of one of the invoice's books. The method takes two inputs, namely bookNum and discount, where bookNum is either 1, 2 or 3. The method then sets the specified bookâ€™s discount to the input discount value
 		if (bookNum < 1 || bookNum > 3 || customerBooks[bookNum -1] == null) {
 			throw new RuntimeException("Invalid book number.");    //throw exception if book is bookNum is invalid
 		}
