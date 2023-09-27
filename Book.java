@@ -1,8 +1,8 @@
 
 public class Book {	
 	private String bookTitle;
-	private double bookWeight;
 	private double bookPrice;
+	private double bookWeight;
 	private double bookDiscount;
 	
 	public Book(String bookTitle, double bookPrice, double bookWeight) { //constructor to initialize all instance variables except discount- set to zero.
@@ -39,7 +39,7 @@ public class Book {
 	}
 	
 	public double priceAfterDiscount(double discount, double bookPrice) { //method that calc and returns the discounted book’s price after applying the discount
-		return bookPrice - discount;
+		return this.bookPrice - this.bookDiscount;
 	}
 	
 	public boolean equals(Object bookObject) { //method to test the equality of two books
