@@ -31,15 +31,15 @@ public class Book {
 	
 	
 	public void setBookDiscount(double percentDiscount) { //setter method for discount discount entered as a percentage
-		this.bookDiscount = percentDiscount / 100.0; 
+		this.bookDiscount = this.bookPrice * (percentDiscount / 100.0); 
 	}
 	
-	public void adjustPrice(double amountDiscounted) { //method than takes an bookPrice type double and adds that amount of money to the book’s price- the amount can be positive or negative as a book’s price may be increased or decreased.
-		this.bookPrice += amountDiscounted;
+	public void adjustPrice(double amountDiscounted) { //method than takes an bookPrice type double and adds that amount of money to the bookâ€™s price- the amount can be positive or negative as a bookâ€™s price may be increased or decreased.
+		this.bookPrice -= amountDiscounted;
 	}
 	
-	public double priceAfterDiscount(double discount, double bookPrice) { //method that calc and returns the discounted book’s price after applying the discount
-		return this.bookPrice * (1- discount);
+	public double priceAfterDiscount(double discount, double bookPrice) { //method that calc and returns the discounted bookâ€™s price after applying the discount
+		return this.bookPrice * (1- this.bookDiscount);
 	}
 	
 	public boolean equals(Object bookObject) { //method to test the equality of two books
